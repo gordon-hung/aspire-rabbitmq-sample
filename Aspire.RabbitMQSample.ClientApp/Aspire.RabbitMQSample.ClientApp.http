@@ -1,0 +1,6 @@
+@Aspire.RabbitMQSample.ClientApp_HostAddress = http://localhost:5023
+
+GET {{Aspire.RabbitMQSample.ClientApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

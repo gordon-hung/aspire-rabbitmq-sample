@@ -2,9 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspire.RabbitMQSample.AppHost", "Aspire.RabbitMQSample.AppHost\Aspire.RabbitMQSample.AppHost.csproj", "{EF37F911-3980-45DD-B58B-C555079298FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspire.RabbitMQSample.AppHost", "Aspire.RabbitMQSample.AppHost\Aspire.RabbitMQSample.AppHost.csproj", "{EF37F911-3980-45DD-B58B-C555079298FA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspire.RabbitMQSample.ServiceDefaults", "Aspire.RabbitMQSample.ServiceDefaults\Aspire.RabbitMQSample.ServiceDefaults.csproj", "{3AE22735-FC19-4AE8-9445-A44986008F89}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspire.RabbitMQSample.ClientApp", "Aspire.RabbitMQSample.ClientApp\Aspire.RabbitMQSample.ClientApp.csproj", "{16751CEA-30E9-46B4-A9B4-34CEE48B698B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspire.RabbitMQSample.ServiceApp", "Aspire.RabbitMQSample.ServiceApp\Aspire.RabbitMQSample.ServiceApp.csproj", "{9796F50B-AE14-42EB-9053-7CBCAAF81077}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +24,14 @@ Global
 		{3AE22735-FC19-4AE8-9445-A44986008F89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AE22735-FC19-4AE8-9445-A44986008F89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AE22735-FC19-4AE8-9445-A44986008F89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16751CEA-30E9-46B4-A9B4-34CEE48B698B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16751CEA-30E9-46B4-A9B4-34CEE48B698B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16751CEA-30E9-46B4-A9B4-34CEE48B698B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16751CEA-30E9-46B4-A9B4-34CEE48B698B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9796F50B-AE14-42EB-9053-7CBCAAF81077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9796F50B-AE14-42EB-9053-7CBCAAF81077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9796F50B-AE14-42EB-9053-7CBCAAF81077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9796F50B-AE14-42EB-9053-7CBCAAF81077}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
