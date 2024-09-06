@@ -1,8 +1,4 @@
-﻿using Aspire.RabbitMQ.Client;
-
-using RabbitMQ.Client;
-
-var builder = WebApplication.CreateBuilder(args);
+﻿var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
@@ -13,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.AddRabbitMQClient("RabbitMQConnection");
+builder.AddRabbitMQClient(connectionName: "RabbitMQConnection");
 
 var app = builder.Build();
 

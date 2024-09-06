@@ -1,26 +1,35 @@
-﻿using System.Text.Json;
-
+﻿using RabbitMQ.Client.Events;
 using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
+using System.Text.Json;
 
 namespace Aspire.RabbitMQSample.ServiceApp.Services;
 
-public class RabbitMqDirectFirstBackgroundService(
-	ILogger<RabbitMqDirectFirstBackgroundService> logger,
+public class RabbitMqHeadersAnyBackgroundService(
+	ILogger<RabbitMqHeadersAnyBackgroundService> logger,
+	IConfiguration configuration,
 	IConnection connection) : BackgroundService
 {
 	protected override Task ExecuteAsync(CancellationToken stoppingToken)
 	{
+		string token = configuration.GetValue("RABBITMQ_TOKEN", "qwerASDFzxcv")!;
+
 		return Task.Run(() =>
 		{
 			var channel = connection.CreateModel();
-			var exchangeName = "amq.direct";
-			var queueName = "amqp.direct.queue";
-			var routingKeyName = "amqp.direct.routingKey.first";
+			var exchangeName = "amq.headers";
+			var queueName = "amqp.headers.queue.any";
+			var routingKeyName = "";
 
 			//channel.ExchangeDeclare(exchange: exchangeName, type: ExchangeType.Direct);
 			channel.QueueDeclare(queue: queueName, durable: false, exclusive: false, autoDelete: false);
-			channel.QueueBind(queue: queueName, exchange: exchangeName, routingKey: routingKeyName);
+
+			var headers = new Dictionary<string, object>
+			{
+				{ "x-match", "any" }, // x-match: "all" or "any"
+				{ "token", token },
+				{ "event","any"}
+			};
+			channel.QueueBind(queue: queueName, exchange: exchangeName, routingKey: routingKeyName, arguments: headers);
 
 			var consumer = new EventingBasicConsumer(channel);
 			consumer.Received += (model, ea) =>
@@ -30,6 +39,7 @@ public class RabbitMqDirectFirstBackgroundService(
 					LogAt = DateTimeOffset.UtcNow.ToString("O"),
 					ea.Exchange,
 					ea.RoutingKey,
+					ea.BasicProperties.Headers,
 					Message = JsonSerializer.Deserialize<object>(ea.Body.ToArray())
 				};
 				logger.LogInformation("{logInformation}", JsonSerializer.Serialize(data));

@@ -1,7 +1,4 @@
-﻿using System.Text;
-using System.Text.Json;
-
-using Microsoft.AspNetCore.Http;
+﻿using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 
 using RabbitMQ.Client;
@@ -87,5 +84,4 @@ public class TopicController(
 			body: body);
 		return ValueTask.CompletedTask;
 	}
-
 }
